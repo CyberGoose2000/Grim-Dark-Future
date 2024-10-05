@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Print Page</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Cinzel+Decorative:wght@400;700;900&family=Comforter+Brush&family=Dawning+of+a+New+Day&family=Fleur+De+Leah&family=Fondamento:ital@0;1&family=Freehand&family=Just+Me+Again+Down+Here&family=Kristi&family=Liu+Jian+Mao+Cao&family=Love+Light&family=Lovers+Quarrel&family=MedievalSharp&family=Miniver&family=Redacted+Script:wght@300;400;700&family=Seaweed+Script&family=Splash&family=UnifrakturCook&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
 /*
 Color scheme for table
@@ -17,20 +17,43 @@ Chaos title (ctitle) = rgb(158, 87, 29)
 Chaos notes (cnotes) = rgb(150, 224, 89)
 Chaose cost (ccost) = rgb(112, 64, 66)
 */
+        body {
+            background-color: black;
+        }
+
         div {
+            border: 0px;
             display: flex;
+            width: auto;
             justify-content: center;
             align-items: center;
             gap: 0px;
         }
-        p {
-            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: large
+
+        .title {
+            position: absolute;
+            min-width: 200px;
+        }
+
+        .smp {
+            font-family: "Cedarville Cursive", system-ui; font-weight: 400; font-style: normal; 
+            font-size: 25px;
         }
         
-        h2 {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        .smh2 {
+            font-family: "Miniver", cursive; font-weight: 400; font-style: normal;
             font-size: 40px;
+            z-index: 1;
+        }
+
+        .cp {
+            font-family: "Just Me Again Down Here", cursive; font-weight: 400; font-style: normal; 
+            font-size: 25px
+        }
+        
+        .ch2 {
+            font-family: "Splash", cursive; font-weight: 400; font-style: normal;
+            font-size: 50px;
         }
 
        .container {
@@ -38,70 +61,79 @@ Chaose cost (ccost) = rgb(112, 64, 66)
             grid-template-columns: 1fr 1fr 1fr 1fr;
             height: 100%;
             width: 100%;
+            border: 0px;
+            gap: 0px;
+            padding: 0px;
+        }
+
+        .picturecontainer {
+            overflow: hidden;
+            width: max-content;
+            height: fit-content;
+            border: 0px;
+        }
+
+        .smheading {
+            display: flex;
+            grid-template-columns: 1fr;
+            height: 100%;
+            width: 100%;
+            border: 0px;
             
         }
         
         .picture {
+            position: absolute;
             display: flex;
+            width: fit-content;
+            height: fit-content;
             justify-content: center;
             align-items: center;
-            background-color: black;
-            border: 0px;
-            padding: 10px;
-            height: 100%;
+            background-color: transparent
         }
 
        .smtitle {
             background-color: rgb(139, 153, 179);
             border: 0px;
-            padding: 10px;
+            padding: 0px 50px 0px 50px;
             height: 100%;
        }
       
        .smnotes {
             background-color: rgb(141, 187, 224);
             border: 0px;
-            padding: 10px;
+            padding: 0px 50px 0px 50px;
             height: 100%;
        }
 
        .smcost {
             background-color: rgb(78, 139, 219);
             border: 0px;
-            padding: 10px;
+            padding: 0px 50px 0px 50px;
             height: 100%;
        }
 
        .ctitle {
             background-color: rgb(158, 87, 29);
             border: 0px;
-            padding: 10px;
+            padding: 0px 50px 0px 50px;
             height: 100%;
        }
 
        .cnotes {
             background-color: rgb(150, 224, 89);
             border: 0px;
-            padding: 10px;
+            padding: 0px 5px 0px 5px;
             height: 100%;
        }
 
        .ccost {
             background-color: rgb(112, 64, 66);
             border: 0px;
-            padding: 10px;
+            padding: 0px 5px 0px 5px;
             height: 100%;
        }
        
-       .title {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 516px;
-            min-width: 200px;
-            padding: 20px;
-            height: 100%;
-        }
 
         .desktopimage {
             display: flex;
@@ -111,10 +143,42 @@ Chaose cost (ccost) = rgb(112, 64, 66)
             display: none;
             z-index: 1;
         }
+
+        .piccontainerphonebackground {
+                display: none;
+            }
+        
+        .piccontainerdesktopbackground {
+                display: flex;
+            }
+
+        .smtitledesktopbackground {
+                display: flex;
+        }
+
+        .smtitlephonebackground {
+                display: none;
+        }
+
         
         @media only screen and (max-width: 600px) {
             .container {
-                display: block
+                display: flex;
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                height: 100%;
+                width: 100%;
+                border: 0px;
+            }
+            .picturecontainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            .smheading {
+                display: flex;
+
             }
             .picture {
                 min-width: none;
@@ -125,333 +189,476 @@ Chaose cost (ccost) = rgb(112, 64, 66)
             .phoneimage {
                 display: flex;
             }
+            .piccontainerphonebackground {
+                display: flex;
+                overflow: hidden;
+                max-width: none;
+            }
+            .piccontainerdesktopbackground {
+                display: none;
+            }
+            .smtitledesktopbackground {
+                display: none;
+            }
+            .smtitlephonebackground {
+                display: flex;
+            }
+            .picturecontainer {
+                border: 0px;
+                display: flex;
+                width: auto;
+                justify-content: center;
+                align-items: center;
+                gap: 0px;
+            }
+            .smtitle {
+                width: 100%;
+            }
+      
+            .smnotes {
+                width: 100%;
+                padding: 50px 50px 50px 50px;
+            }
+
+            .smcost {
+                width: 100%;
+            }
+
+            .ctitle {
+                width: 100%;
+            }
+
+            .cnotes {
+                width: 100%;
+            }
+
+            .ccost {
+                width: 100%;
+            }
+       
+
         }
     </style>
 </head>
 
 
 <body>
-    <div> 
-        <div class=>
-            <h2>Space Marines</h2>
-        </div>
+    <div class="smheading"> 
+            <img class="smtitledesktopbackground" src="./Assets/Backgrounds/1000x497 H2 File Background Shade.jpg">
+            <img class="smtitlephonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg">
+                <div class="title">
+                    <h2 class="smh2">Space</h2>
+                    <h2 class="smh2">Marines</h2>
+                </div>
     </div>
 
     <div class="container">
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Body.JPG" alt="Space Marine Body">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Body.jpg" alt="Space Marine Body">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Body.jpg" alt="Space Marine Body">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Body.jpg" alt="Space Marine Body">
+                </div>
         </div>
         <div class="smtitle">
-                <p><a href="https://cults3d.com/en/3d-model/tool/aquilon-7fc9">Marine Body</a></p>  
+                    <p class="smp"><a href="https://cults3d.com/en/3d-model/tool/aquilon-7fc9">Marine Body</a></p>             
         </div>
         <div class="smnotes">
-            <p>Just legs and torso, not arms, head or backpack. More knight like than the nrom.</p>
+            <p class="smp">Just legs and torso, not arms, head or backpack. More knight like than the nrom.</p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Head.JPG" alt="Space Marin Head, hooded and spiked">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Head.jpg" alt="Space Marin Head, hooded and spiked">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Head.JPG" alt="Space Marin Head, hooded and spiked">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Head.jpg" alt="Space Marin Head, hooded and spiked">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/custodes-helmet-bits-wardens-of-the-dark-cells">Marine head</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/custodes-helmet-bits-wardens-of-the-dark-cells">Marine head</a></p>    
         </div>
         <div class="smnotes">
-            <p>Hooded and spiked. Could work for Imperium or Chaos.</p>
+            <p class="smp">Hooded and spiked. Could work for Imperium or Chaos.</p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM Helmet 1.JPG" alt="Templar Helmet">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM Helmet 1.jpg" alt="Templar Helmet">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM Helmet 1.JPG" alt="Templar Helmet">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM Helmet 1.jpg" alt="Templar Helmet">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/templars-space-warrior-helmets-3-supports">Templar Helmets</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/templars-space-warrior-helmets-3-supports">Templar Helmets</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM Magpie Helmet.JPG" alt="Magpie Helmet">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM Magpie Helmet.jpg" alt="Magpie Helmet">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM Magpie Helmet.JPG" alt="Magpie Helmet">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM Magpie Helmet.jpg" alt="Magpie Helmet">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/elite-broody-magpies-helmet-standard">Magpie Helemts</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/elite-broody-magpies-helmet-standard">Magpie Helemts</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Sabre.JPG" alt="Power Sabre">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Sabre.jpg" alt="Power Sabre">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Sabre.JPG" alt="Power Sabre">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Sabre.jpg" alt="Power Sabre">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/space-warrior-power-sabers">Power Sabres</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/space-warrior-power-sabers">Power Sabres</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Chain Sabre.JPG" alt="Chain Sabre">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Chain Sabre.jpg" alt="Chain Sabre">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Chain Sabre.JPG" alt="Chain Sabre">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Chain Sabre.jpg" alt="Chain Sabre">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/space-warrior-chain-sabers">Chain Sabres</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/space-warrior-chain-sabers">Chain Sabres</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Katana.JPG" alt="Katana">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Katana.jpg" alt="Katana">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Katana.JPG" alt="Katana">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Katana.jpg" alt="Katana">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/super-elite-katana">Katana</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/super-elite-katana">Katana</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Chain Katana.JPG" alt="Chain Katana">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Chain Katana.jpg" alt="Chain Katana">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Chain Katana.JPG" alt="Chain Katana">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Chain Katana.jpg" alt="Chain Katana">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/o-dachi-eviscerator">Chain Katana</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/o-dachi-eviscerator">Chain Katana</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM The Steeple.JPG" alt="Dark Sword">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM The Steeple.jpg" alt="Dark Sword">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM The Steeple.JPG" alt="Dark Sword">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM The Steeple.jpg" alt="Dark Sword">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/the-steeple">The Steeple</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/the-steeple">The Steeple</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Shard of Light.JPG" alt="Light Sword">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Shard of Light.jpg" alt="Light Sword">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Shard of Light.JPG" alt="Light Sword">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Shard of Light.jpg" alt="Light Sword">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/fantasy-sword-for-marines">Sword</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/fantasy-sword-for-marines">Sword</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM Iron Star Helmet.JPG" alt="Iron Helmet">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM Iron Star Helmet.jpg" alt="Iron Helmet">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM Iron Star Helmet.JPG" alt="Iron Helmet">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM Iron Star Helmet.jpg" alt="Iron Helmet">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/lawbringer-marine-helmet">Helmet</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/lawbringer-marine-helmet">Helmet</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>Free</p>
+            <p class="smp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Samurai Captain.JPG" alt="Samurai Captain">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Samurai Captain.jpg" alt="Samurai Captain">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Samurai Captain.JPG" alt="Samurai Captain">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Samurai Captain.jpg" alt="Samurai Captain">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/samurai-space-marine-warrior-3d-print-model-upa-3">Samurai Captain</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/samurai-space-marine-warrior-3d-print-model-upa-3">Samurai Captain</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>£5.23</p>
+            <p class="smp">£5.23</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/SM Samurai.JPG" alt="Samurai">
-            <img class="phoneimage" src="./3D Print Pictures/250px SM Samurai.jpg" alt="Samurai">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Samurai.JPG" alt="Samurai">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Samurai.jpg" alt="Samurai">
+                </div>
         </div>
         <div class="smtitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/samurai-space-marine-warrior-3d-print-model-upa-2">Samurai</a></p>    
+            <p class="smp"><a href="https://cults3d.com/en/3d-model/game/samurai-space-marine-warrior-3d-print-model-upa-2">Samurai</a></p>    
         </div>
         <div class="smnotes">
-            <p></p>
+            <p class="smp"></p>
         </div>
         <div class="smcost">
-            <p>£4.50</p>
+            <p class="smp">£4.50</p>
         </div>
     </div>
 
-    <div> 
-        <div>
-            <h2>Chaos Marines</h2>
-        </div>
+     
+    <div class="smheading">
+        <img class="smtitledesktopbackground" src="./Assets/Backgrounds/1000x497 H2 File Background Shade.jpg">
+        <img class="smtitlephonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg">
+            <div class="title">
+                <h2 class="smh2">Chaos</h2>
+                <h2 class="smh2">Marines</h2>
+            </div>
     </div>
 
     <div class="container">
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/PM Demon 1.JPG" alt="Nurgle Demon Prince">
-            <img class="phoneimage" src="./3D Print Pictures/250px PM Demon 1.jpg" alt="Nurgle Demon Prince">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px PM Demon 1.JPG" alt="Nurgle Demon Prince">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px PM Demon 1.jpg" alt="Nurgle Demon Prince">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/pestilence-dark-gods">Nurgle Demon Prince</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/pestilence-dark-gods">Nurgle Demon Prince</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>£4.66</p>
+            <p class="cp">£4.66</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/PM Demon 2.JPG" alt="Nurgle Demon">
-            <img class="phoneimage" src="./3D Print Pictures/250px PM Demon 2.jpg" alt="Nurgle Demon">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px PM Demon 2.JPG" alt="Nurgle Demon">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px PM Demon 2.jpg" alt="Nurgle Demon">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/pestilence-dark-gods">Nurgle Demon Prince</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/pestilence-dark-gods">Nurgle Demon Prince</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>£4.66</p>
+            <p class="cp">£4.66</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/PM Sorcerer 1.JPG" alt="Nurgle Demon">
-            <img class="phoneimage" src="./3D Print Pictures/250px PM Sorcerer 1.jpg" alt="Nurgle Demon">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px PM Sorcerer 1.JPG" alt="Nurgle Demon">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px PM Sorcerer 1.jpg" alt="Nurgle Demon">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/the-rot-sorcerer-dark-gods">Nurgle Sorcerer</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/the-rot-sorcerer-dark-gods">Nurgle Sorcerer</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>£2.59</p>
+            <p class="cp">£2.59</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C Captain with jumpack.JPG" alt="Captain with Jump Pack">
-            <img class="phoneimage" src="./3D Print Pictures/250px C Captain with jumpack.JPG" alt="Captain with Jump Pack">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C Captain with jumpack.JPG" alt="Captain with Jump Pack">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C Captain with jumpack.JPG" alt="Captain with Jump Pack">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/primary-draconic-jump-captain">Captain with Jump Pack</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/primary-draconic-jump-captain">Captain with Jump Pack</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>Free</p>
+            <p class="cp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM Helmet 1.JPG" alt="Templar Helmet">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM Helmet 1.JPG" alt="Templar Helmet">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM Helmet 1.JPG" alt="Templar Helmet">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM Helmet 1.JPG" alt="Templar Helmet">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/templars-space-warrior-helmets-3-supports">Templar Helmets</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/templars-space-warrior-helmets-3-supports">Templar Helmets</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>Free</p>
+            <p class="cp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM Magpie Helmet.JPG" alt="Magpie Helmet">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM Magpie Helmet.JPG" alt="Magpie Helmet">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM Magpie Helmet.JPG" alt="Magpie Helmet">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM Magpie Helmet.JPG" alt="Magpie Helmet">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/elite-broody-magpies-helmet-standard">Magpie Helemts</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/elite-broody-magpies-helmet-standard">Magpie Helemts</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>Free</p>
+            <p class="cp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM The Steeple.JPG" alt="Dark Sword">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM The Steeple.JPG" alt="Dark Sword">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM The Steeple.JPG" alt="Dark Sword">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM The Steeple.JPG" alt="Dark Sword">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/the-steeple">The Steeple</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/the-steeple">The Steeple</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>Free</p>
+            <p class="cp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C SM Iron Star Helmet.JPG" alt="Iron Helmet">
-            <img class="phoneimage" src="./3D Print Pictures/250px C SM Iron Star Helmet.JPG" alt="Iron Helmet">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C SM Iron Star Helmet.JPG" alt="Iron Helmet">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C SM Iron Star Helmet.JPG" alt="Iron Helmet">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/lawbringer-marine-helmet">Helmet</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/lawbringer-marine-helmet">Helmet</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>Free</p>
+            <p class="cp">Free</p>
         </div>
 
-        <div class="picture">
-            <img class="desktopimage" src="./3D Print Pictures/C Rat Marine.JPG" alt="Rat Marine">
-            <img class="phoneimage" src="./3D Print Pictures/250px C Rat Marine.JPG" alt="Rat Marine">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Shade.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px C Rat Marine.JPG" alt="Rat Marine">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px C Rat Marine.jpg" alt="Rat Marine">
+                </div>
         </div>
         <div class="ctitle">
-            <p><a href="https://cults3d.com/en/3d-model/game/rat-mutant-space-marine-and-super-heavy-guns-and-saw-build-your-own-persupported">Rat Marine</a></p>    
+            <p class="cp"><a href="https://cults3d.com/en/3d-model/game/rat-mutant-space-marine-and-super-heavy-guns-and-saw-build-your-own-persupported">Rat Marine</a></p>    
         </div>
         <div class="cnotes">
-            <p></p>
+            <p class="cp"></p>
         </div>
         <div class="ccost">
-            <p>Free</p>
+            <p class="cp">Free</p>
         </div>
     </div>
 </body>
