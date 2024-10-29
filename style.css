@@ -1,0 +1,330 @@
+
+/*
+Color scheme for table
+Space Marine title (smtitle) = rgb(139, 153, 179)
+Space Marine notes (smnotes) = rgb(141, 187, 224)
+Space Marine cost (smcost) = rgb(78, 139, 219)
+Chaos title (ctitle) = rgb(158, 87, 29)
+Chaos notes (cnotes) = rgb(150, 224, 89)
+Chaose cost (ccost) = rgb(112, 64, 66)
+*/
+        body {
+            background-color: black;
+        }
+
+        div {
+            border: 0px;
+            display: flex;
+            width: auto;
+            justify-content: center;
+            align-items: center;
+            gap: 0px;
+        }
+
+        .title {
+            position: absolute;
+            min-width: 200px;
+        }
+
+        .smp {
+            font-family: "Cedarville Cursive", system-ui; font-weight: 400; font-style: normal; 
+            font-size: 25px;
+        }
+        
+        .smh2 {
+            font-family: "Miniver", cursive; font-weight: 400; font-style: normal;
+            font-size: 40px;
+            z-index: 1;
+        }
+
+        .cp {
+            font-family: "Just Me Again Down Here", cursive; font-weight: 400; font-style: normal; 
+            font-size: 25px
+        }
+        
+        .ch2 {
+            font-family: "Splash", cursive; font-weight: 400; font-style: normal;
+            font-size: 50px;
+        }
+
+       .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            height: 100%;
+            width: 100%;
+            border: 0px;
+            gap: 0px;
+            padding: 0px;
+        }
+
+        .picturecontainer {
+            overflow: hidden;
+            width: max-content;
+            border: 0px;
+        }
+
+        .smheading {
+            display: flex;
+            grid-template-columns: 1fr;
+            height: 100%;
+            width: 100%;
+            border: 0px;
+            
+        }
+        
+        .picture {
+            position: absolute;
+            display: flex;
+            width: fit-content;
+            height: fit-content;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent
+        }
+
+       .smtitle {
+            background-color: rgb(139, 153, 179);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+      
+       .smnotes {
+            background-color: rgb(141, 187, 224);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .smcost {
+            background-color: rgb(78, 139, 219);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .ctitle {
+            background-color: rgb(158, 87, 29);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .cnotes {
+            background-color: rgb(150, 224, 89);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .ccost {
+            background-color: rgb(112, 64, 66);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .ntitle {
+            background-color: rgb(158, 87, 29);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .nnotes {
+            background-color: rgb(150, 224, 89);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .ncost {
+            background-color: rgb(112, 64, 66);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .terraintitle {
+            background-color: rgb(158, 87, 29);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .terrainnotes {
+            background-color: rgb(150, 224, 89);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .terraincost {
+            background-color: rgb(112, 64, 66);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .misctitle {
+            background-color: rgb(158, 87, 29);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .miscnotes {
+            background-color: rgb(150, 224, 89);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .misccost {
+            background-color: rgb(112, 64, 66);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+       
+
+        .desktopimage {
+            display: flex;
+        }
+
+        .phoneimage {
+            display: none;
+            z-index: 1;
+        }
+
+        .piccontainerphonebackground {
+                display: none;
+            }
+        
+        .piccontainerdesktopbackground {
+                display: flex;
+            }
+
+        .smtitledesktopbackground {
+                display: flex;
+        }
+
+        .smtitlephonebackground {
+                display: none;
+        }
+
+        
+        @media only screen and (max-width: 600px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                height: 100%;
+                width: 100%;
+                border: 0px;
+            }
+            .picturecontainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            .smheading {
+                display: flex;
+
+            }
+            .picture {
+                min-width: none;
+            }
+            .desktopimage {
+                display: none;
+            }
+            .phoneimage {
+                display: flex;
+            }
+            .piccontainerphonebackground {
+                display: flex;
+                overflow: hidden;
+                max-width: none;
+            }
+            .piccontainerdesktopbackground {
+                display: none;
+            }
+            .smtitledesktopbackground {
+                display: none;
+            }
+            .smtitlephonebackground {
+                display: flex;
+            }
+            .picturecontainer {
+                border: 0px;
+                display: flex;
+                width: auto;
+                justify-content: center;
+                align-items: center;
+                gap: 0px;
+            }
+            .smtitle {
+                width: 100%;
+            }
+      
+            .smnotes {
+                width: 100%;
+                padding: 50px 50px 50px 50px;
+            }
+
+            .smcost {
+                width: 100%;
+            }
+
+            .ctitle {
+                width: 100%;
+            }
+
+            .cnotes {
+                width: 100%;
+            }
+
+            .ccost {
+                width: 100%;
+            }
+
+            .misctitle {
+                width: 100%;
+            }
+
+            .miscnotes {
+                width: 100%;
+            }
+
+            .misccost {
+                width: 100%;
+            }
+
+            .ntitle {
+                width: 100%;
+            }
+
+            .nnotes {
+                width: 100%;
+            }
+
+            .ncost {
+                width: 100%;
+            }
+
+            .terraintitle {
+                width: 100%;
+            }
+
+            .terrainnotes {
+                width: 100%;
+            }
+
+            .terraincost {
+                width: 100%;
+            }
+       
+
+        }
+       

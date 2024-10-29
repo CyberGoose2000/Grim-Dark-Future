@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Print Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Cinzel+Decorative:wght@400;700;900&family=Comforter+Brush&family=Dawning+of+a+New+Day&family=Fleur+De+Leah&family=Fondamento:ital@0;1&family=Freehand&family=Just+Me+Again+Down+Here&family=Kristi&family=Liu+Jian+Mao+Cao&family=Love+Light&family=Lovers+Quarrel&family=MedievalSharp&family=Miniver&family=Redacted+Script:wght@300;400;700&family=Seaweed+Script&family=Splash&family=UnifrakturCook&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+/*
+Color scheme for table
+Space Marine title (smtitle) = rgb(139, 153, 179)
+Space Marine notes (smnotes) = rgb(141, 187, 224)
+Space Marine cost (smcost) = rgb(78, 139, 219)
+Chaos title (ctitle) = rgb(158, 87, 29)
+Chaos notes (cnotes) = rgb(150, 224, 89)
+Chaose cost (ccost) = rgb(112, 64, 66)
+*/
+        body {
+            background-color: black;
+        }
+
+        div {
+            border: 0px;
+            display: flex;
+            width: auto;
+            justify-content: center;
+            align-items: center;
+            gap: 0px;
+        }
+
+        .title {
+            position: absolute;
+            min-width: 200px;
+        }
+
+        .smp {
+            font-family: "Cedarville Cursive", system-ui; font-weight: 400; font-style: normal; 
+            font-size: 25px;
+        }
+        
+        .smh2 {
+            font-family: "Miniver", cursive; font-weight: 400; font-style: normal;
+            font-size: 40px;
+            z-index: 1;
+        }
+
+        .cp {
+            font-family: "Just Me Again Down Here", cursive; font-weight: 400; font-style: normal; 
+            font-size: 25px
+        }
+        
+        .ch2 {
+            font-family: "Splash", cursive; font-weight: 400; font-style: normal;
+            font-size: 50px;
+        }
+
+       .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            height: 100%;
+            width: 100%;
+            border: 0px;
+            gap: 0px;
+            padding: 0px;
+        }
+
+        .containerbackground {
+            position: absolute;
+        }
+
+        .picturecontainer {
+            overflow: hidden;
+            width: max-content;
+            height: fit-content;
+            border: 0px;
+        }
+
+        .smheading {
+            display: flex;
+            grid-template-columns: 1fr;
+            height: 100%;
+            width: 100%;
+            border: 0px;
+            
+        }
+        
+        .picture {
+            position: absolute;
+            display: flex;
+            width: fit-content;
+            height: fit-content;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent
+        }
+
+       .smtitle {
+            background-color: rgb(139, 153, 179);
+            overflow: clip;
+            overflow-clip-margin: 0px;
+            border: 0px;
+            height: 100%
+       }
+
+       .titlecostcontent {
+        background-color: transparent;
+        position: absolute;
+        min-width: 300px;
+       }
+      
+       .smnotes {
+            background-color: rgb(141, 187, 224);
+            overflow: clip;
+            overflow-clip-margin: 0px;
+            border: 0px;
+            padding: 0px;
+            height: 100%
+       }
+
+       .smcost {
+            background-color: transparent;
+            overflow: clip;
+            overflow-clip-margin: 0px;
+            border: 0px;
+            padding: 0px;
+            height: 100%
+       }
+
+       .ctitle {
+            background-color: rgb(158, 87, 29);
+            border: 0px;
+            padding: 0px 50px 0px 50px;
+            height: 100%;
+       }
+
+       .cnotes {
+            background-color: rgb(150, 224, 89);
+            border: 0px;
+            padding: 0px 5px 0px 5px;
+            height: 100%;
+       }
+
+       .ccost {
+            background-color: rgb(112, 64, 66);
+            border: 0px;
+            padding: 0px 5px 0px 5px;
+            height: 100%;
+       }
+       
+
+        .desktopimage {
+            display: flex;
+        }
+
+        .phoneimage {
+            display: none;
+            z-index: 1;
+        }
+
+        .piccontainerphonebackground {
+            display: none;
+        }
+        
+        .piccontainerdesktopbackground {
+            display: flex;
+        }
+
+        .smtitledesktopbackground {
+            display: flex;
+        }
+
+        .smtitlephonebackground {
+            display: none;
+        }
+
+        .lightdesktopbackground {
+            display: flex;
+            opacity: 25%;
+        }
+
+        .lightphonebackground {
+            display: none;
+        }
+
+        
+        @media only screen and (max-width: 600px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                height: 100%;
+                width: 100%;
+                border: 0px;
+            }
+            .picturecontainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            .smheading {
+                display: flex;
+
+            }
+            .picture {
+                min-width: none;
+            }
+            .desktopimage {
+                display: none;
+            }
+            .phoneimage {
+                display: flex;
+            }
+            .piccontainerphonebackground {
+                display: flex;
+                overflow: hidden;
+                max-width: none;
+            }
+            .piccontainerdesktopbackground {
+                display: none;
+            }
+            .smtitledesktopbackground {
+                display: none;
+            }
+            .smtitlephonebackground {
+                display: flex;
+            }
+            .picturecontainer {
+                border: 0px;
+                display: flex;
+                width: auto;
+                justify-content: center;
+                align-items: center;
+                gap: 0px;
+            }
+            .smtitle {
+                width: 100%;
+            }
+      
+            .smnotes {
+                width: 100%;
+                padding: 50px 50px 50px 50px;
+            }
+
+            .smcost {
+                width: 100%;
+            }
+
+            .ctitle {
+                width: 100%;
+            }
+
+            .cnotes {
+                width: 100%;
+            }
+
+            .ccost {
+                width: 100%;
+            }
+       
+            .lightdesktopbackground {
+                display: none;
+            }
+
+            .lightphonebackground {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="smheading"> 
+            <img class="smtitledesktopbackground" src="./Assets/Backgrounds/1000x497 H2 File Background Shade.jpg">
+            <img class="smtitlephonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg">
+                <div class="title">
+                    <h2 class="smh2">Space</h2>
+                    <h2 class="smh2">Marines</h2>
+                </div>
+    </div>
+
+    <div class="container">
+        <img class="containerbackground" src="./Assets/Backgrounds/3000x4324 File Background Life.JPG" alt="">
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Body.jpg" alt="Space Marine Body">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Body.jpg" alt="Space Marine Body">
+                </div>
+        </div>
+        <div class="smtitle">
+            <img class="lightdesktopbackground" src="./Assets/Backgrounds/600x600 Background Life.jpg">
+            <img class="lightphonebackground" src="./Assets/Backgrounds/600x100 Title Cost Background Life.jpg">
+                <div class="titlecostcontent">
+                    <p class="smp"><a href="https://cults3d.com/en/3d-model/tool/aquilon-7fc9">Marine Body</a></p>             
+                </div>
+            </div>
+        <div class="smnotes">
+            <img class="lightdesktopbackground" src="./Assets/Backgrounds/600x600 Background Life.jpg">
+            <img class="lightphonebackground" src="./Assets/Backgrounds/600x100 Title Cost Background Life.jpg">
+                <div class="titlecostcontent">
+                    <p class="smp">Just legs and torso, not arms, head or backpack. More knight like than the nrom.</p>
+                </div>
+        </div>
+        <div class="smcost">
+            <img class="lightdesktopbackground" src="./Assets/Backgrounds/600x600 Background Life.jpg">
+            <img class="lightphonebackground" src="./Assets/Backgrounds/600x100 Title Cost Background Life.jpg">
+                <div class="titlecostcontent">
+                    <p class="smp">Free</p>
+                </div>
+        </div>
+
+        <div class="picturecontainer">
+            <img  class="piccontainerphonebackground" src="./Assets/Backgrounds/600x298 H2 File Background Life.jpg" alt="">
+            <img class="piccontainerdesktopbackground" src="/Assets/Backgrounds/600x600 Background Life.jpg" alt="">
+                <div class="picture">
+                    <img class="desktopimage" src="./3D Print Pictures/500px width/500px SM Body.jpg" alt="Space Marine Body">
+                    <img class="phoneimage" src="./3D Print Pictures/250px width/250px SM Body.jpg" alt="Space Marine Body">
+                </div>
+        </div>
+        <div class="smtitle">
+            <img class="lightdesktopbackground" src="./Assets/Backgrounds/600x600 Background Life.jpg">
+            <img class="lightphonebackground" src="./Assets/Backgrounds/600x100 Title Cost Background Life.jpg">
+                <div class="titlecostcontent">
+                    <p class="smp"><a href="https://cults3d.com/en/3d-model/tool/aquilon-7fc9">Marine Body</a></p>             
+                </div>
+            </div>
+        <div class="smnotes">
+            <img class="lightdesktopbackground" src="./Assets/Backgrounds/600x600 Background Life.jpg">
+            <img class="lightphonebackground" src="./Assets/Backgrounds/600x100 Title Cost Background Life.jpg">
+                <div class="titlecostcontent">
+                    <p class="smp">Just legs and torso, not arms, head or backpack. More knight like than the nrom.</p>
+                </div>
+        </div>
+        <div class="smcost">
+            <img class="lightdesktopbackground" src="./Assets/Backgrounds/600x600 Background Life.jpg">
+            <img class="lightphonebackground" src="./Assets/Backgrounds/600x100 Title Cost Background Life.jpg">
+                <div class="titlecostcontent">
+                    <p class="smp">Free</p>
+                </div>
+        </div>
+    
+    </div>
+
+     
+    
